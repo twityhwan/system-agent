@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { NetComponent } from './netmanager/net.component';
+import { DiskComponent } from './diskmanager/disk.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { NetComponent } from './netmanager/net.component';
   ],
   declarations: [
     AppComponent,
-    NetComponent
+    NetComponent,
+    DiskComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
