@@ -1,0 +1,46 @@
+<div>
+    <h1>{{title}}</h1>
+    <div class="panel panel-default"
+        style="width: 100%; float: left; margin-right: 20px;">
+        <div class="panel-heading title">Panel Icons</div>
+        <div class="panel-body">
+            <button type="button" *ngFor="let icon of panel_icons"
+                class="btn btn-primary panel_icons">
+                {{icon}}
+            </button>
+        </div>
+    </div>
+    <div class="panel panel-default"
+        style="width: 100%; float: left; margin-right: 20px;">
+        <div class="panel-heading title">Hardware Settings<a style="float:right;" class="cursor" (click)="hwSettings.onToggled($event.target)">hide</a></div>
+        <div class="panel-body" [hidden]="!hw_setting_visible">
+            <table id="hw_list" class="table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Device</th>
+                        <th>Status</th>
+                        <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let hw of hwlist;">
+                        <td>{{hw.name}}</td>
+                        <td *ngIf="hw.device !== undefined">
+                            {{hw.device.name}}
+                        </td>
+                        <td *ngIf="hw.device === undefined">
+                        </td>
+                        <td>{{hw.status}}</td>
+                        <td>
+                            <button type="button" class="btn btn-sm"
+                            (click)="control(hw, $event.target)">
+                                {{getControlText(hw)}}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

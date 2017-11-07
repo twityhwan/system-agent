@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class NetComponent {
     title = 'Network Management';
     public selected: object = undefined;
-    
+
     netdevices = [
         {
             name: "eth0",

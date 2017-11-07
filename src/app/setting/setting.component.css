@@ -1,0 +1,12 @@
+.title {
+    font-weight: bold;
+}
+
+.panel_icons {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.cursor:hover {
+    cursor:pointer;
+}

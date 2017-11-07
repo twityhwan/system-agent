@@ -11,9 +11,11 @@ import { DiskComponent } from './diskmanager/disk.component';
 })
 export class AppComponent {
   title = 'System Agent';
-  sidemenus = ['Network', 'Disk'];
+  sidemenus = ['Dashboard', 'Setting', 'Network', 'Disk'];
   selectedMenu: string;
   routerMap = {
+      'Dashboard': '/dashboard',
+      'Setting': '/setting',
       'Network': '/netmanager',
       'Disk': 'diskmanager'
   };
