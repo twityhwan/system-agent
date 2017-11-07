@@ -1,3 +1,48 @@
 <div>
-<h1>{{title}}</h1>
+    <h1>{{title}}</h1>
+    <!-- device list -->
+    <div class="panel panel-default"
+        style="width: 30%; float: left; margin-right: 20px;">
+        <div class="panel-heading title">Network List<button type="button" class="btn btn-xs btn-primary" style="float: right;">add</button></div>
+        <div class="panel-body">
+            <table id="net_list">
+                <tr>
+                    <td>#</td>
+                    <td>Name</td>
+                </tr>
+                <tr
+                    *ngFor="let nd of netdevices; let i = index;"
+                    (click)="netList.onItemClicked(nd);"
+                    class="highlight">
+                    <td>{{i}}</td>
+                    <td>{{nd.name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- information -->
+    <div class="panel panel-default"
+        style="width: 60%; float: left; min-height: 300px;">
+        <div class="panel-heading title">Details</div>
+        <div class="panel-body">
+            <table id="net_detail" *ngIf="selected != undefined">
+                <tr class="highlight">
+                    <td>Name</td>
+                    <td>{{selected.name}}</td>
+                </tr>
+                <tr class="highlight">
+                    <td>Interface</td>
+                    <td>{{selected.interface}}</td>
+                </tr>
+                <tr class="highlight">
+                    <td>IP</td>
+                    <td>{{selected.ip}}</td>
+                </tr>
+                <tr class="highlight">
+                    <td>MAC</td>
+                    <td>{{selected.mac}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

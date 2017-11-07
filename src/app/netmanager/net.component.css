@@ -1,0 +1,17 @@
+td {
+    padding: 5px;
+}
+
+tr.highlight:hover {
+    background-color: #ccccff;
+    cursor:pointer;
+}
+
+.title {
+    font-weight: bold;
+}
+
+table#net_detail td {
+    min-width: 80px;
+    padding: 5px;
+}
