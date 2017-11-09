@@ -4,10 +4,10 @@
         style="width: 100%; float: left; margin-right: 20px;">
         <div class="panel-heading title">Panel Icons</div>
         <div class="panel-body">
-            <button type="button" *ngFor="let icon of panel_icons"
-                class="btn btn-primary panel_icons">
-                {{icon}}
-            </button>
+            <button type="button"
+                *ngFor="let icon of panel_icons"
+                class="btn btn-primary panel_icons"
+                (click)="onButtonClicked($event.target, icon)">{{icon}}</button>
         </div>
     </div>
     <div class="panel panel-default"
@@ -43,4 +43,5 @@
             </table>
         </div>
     </div>
+    <sys-log></sys-log>
 </div>

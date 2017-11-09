@@ -9,6 +9,7 @@ import { DashComponent } from './dashboard/dash.component';
 import { SettingComponent } from './setting/setting.component';
 import { NetComponent } from './netmanager/net.component';
 import { DiskComponent } from './diskmanager/disk.component';
+import { LogComponent } from './log/log.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { DiskComponent } from './diskmanager/disk.component';
     DashComponent,
     SettingComponent,
     NetComponent,
-    DiskComponent
+    DiskComponent,
+    LogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
