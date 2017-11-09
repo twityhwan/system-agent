@@ -5,9 +5,9 @@
         <div class="panel-heading title">Panel Icons</div>
         <div class="panel-body">
             <button type="button"
-                *ngFor="let icon of panel_icons"
-                class="btn btn-primary panel_icons"
-                (click)="onButtonClicked($event.target, icon)">{{icon}}</button>
+                *ngFor="let icon of panelIcons"
+                [ngClass]="{'btn': true, 'btn-success': icon.status, 'btn-secondary': !icon.status, 'panel_icons': true}"
+                (click)="onButtonClicked($event.target, icon)">{{icon.name}}</button>
         </div>
     </div>
     <div class="panel panel-default"
@@ -35,7 +35,7 @@
                         <td>
                             <button type="button" class="btn btn-sm"
                             (click)="control(hw, $event.target)">
-                                {{getControlText(hw)}}
+                                {{hw.control}}
                             </button>
                         </td>
                     </tr>
@@ -43,5 +43,9 @@
             </table>
         </div>
     </div>
+    <mount-dialog [(visible)]="showDialog">
+        <h3>Test</h3>
+        <button (click)="showDialog=!showDialog" class="btn btn-default">Close</button>
+    </mount-dialog>
     <sys-log></sys-log>
 </div>

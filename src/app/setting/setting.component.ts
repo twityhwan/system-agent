@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { LogComponent } from '../log/log.component';
 import { LogService, LogMessage } from '../log/log.service';
+import { PanelIcon } from './setting.model';
+import {  DialogComponent } from '../dialog/dialog.component';
 
 @Component({
     selector: 'setting',
@@ -11,6 +13,8 @@ import { LogService, LogMessage } from '../log/log.service';
 })
 
 export class SettingComponent {
+    panelIcons: PanelIcon[] = new Array<PanelIcon>();
+    showDialog: boolean = false;
     title = 'Setting';
     toggleStyle = {
         On: {backgroundColor: 'LawnGreen'},
@@ -34,13 +38,16 @@ export class SettingComponent {
     }
 
     panel_icons = ["Power", "RCU", "Record", "HDD", "LAN", "WAN", "Message"];
+
     constructor(private logService: LogService) {
+        for (let icon of this.panel_icons) {
+            this.panelIcons.push(new PanelIcon(icon, false));
+        }
     }
 
     onButtonClicked = (element, icon) => {
-
         var msg;
-        switch(icon) {
+        switch(icon.name) {
             case "Power":
                 console.log("Power");
                 this.isPowerOn = !this.isPowerOn;
@@ -53,13 +60,14 @@ export class SettingComponent {
                 break;
 
         }
+        icon.status = !icon.status;
     }
 
     hwlist = [
-        {name: "WLAN", device: undefined, status: 'Off'},
-        {name: "USB1", device: {name: "WiFi Dongle"}, status: 'Off'},
-        {name: "USB2", device: {name: "Sandisk"}, status: 'Off'},
-        {name: "USB3", device: undefined, status: 'Off'},
+        {name: "WLAN", device: undefined, status: 'Off', control: "Mount"},
+        {name: "USB1", device: {name: "WiFi Dongle"}, status: 'Off', control: "Unmount"},
+        {name: "USB2", device: {name: "Sandisk"}, status: 'Off', control: "Unmount"},
+        {name: "USB3", device: undefined, status: 'Off', control: "Mount"},
     ];
 
     changeStatus = (element) => {
@@ -70,19 +78,13 @@ export class SettingComponent {
         element.style.backgroundColor = this.toggleStyle[element.textContent].backgroundColor;
     }
 
-    control = (hw:Object, element) => {
+    control = (hw, element) => {
         console.log("control()", hw);
-        if (element.textContent === "Mount") {
+        if (hw.control === "Mount") {
             // TODO: popup
-        } else if (element.textContent === "Unmount") {
+            this.showDialog = true;
+        } else if (hw.control === "Unmount") {
             // TODO: remove
         }
-    }
-
-    getControlText = (hw) => {
-        if (hw.device !== undefined)
-            return "Unmount";
-        else
-            return "Mount";
     }
 }

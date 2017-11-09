@@ -10,6 +10,7 @@ import { SettingComponent } from './setting/setting.component';
 import { NetComponent } from './netmanager/net.component';
 import { DiskComponent } from './diskmanager/disk.component';
 import { LogComponent } from './log/log.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { LogComponent } from './log/log.component';
     DashComponent,
     SettingComponent,
     NetComponent,
+    DialogComponent,
     DiskComponent,
     LogComponent
   ],
